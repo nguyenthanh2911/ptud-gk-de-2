@@ -1,3 +1,10 @@
+# Thông tin sinh viên  
+Nguyễn Văn Thành
+MSSV: 22724071
+
+
+
+
 # Flask Task Manager
 
 Flask Task Manager là một ứng dụng quản lý tác vụ đơn giản được xây dựng bằng Flask và SQLite. Nó cho phép người dùng tạo, chỉnh sửa và quản lý các tác vụ trong khi theo dõi trạng thái hoàn thành và dấu thời gian của chúng. Người dùng cũng có thể tải lên ảnh đại diện và xem số lượng tác vụ quá hạn.
