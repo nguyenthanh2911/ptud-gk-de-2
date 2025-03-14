@@ -20,15 +20,27 @@ Flask Task Manager là một ứng dụng quản lý tác vụ đơn giản đư
 
 ## cài đặt
 
-1. khởi chạy
+### Cài đặt tự động (Khuyến nghị)
+
+#### Windows:
+```
+run.bat
 ```
 
-2. Tạo môi trường ảo:
+#### macOS/Linux:
+```
+chmod +x run.sh
+./run.sh
+```
+
+### Cài đặt thủ công
+
+1. Tạo môi trường ảo:
 ```
 python -m venv venv
 ```
 
-3. Kích hoạt môi trường ảo:
+2. Kích hoạt môi trường ảo:
 - Trên Windows:
 ```
 venv\Scripts\activate
@@ -38,26 +50,34 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-4. Cài đặt các gói cần thiết:
+3. Cài đặt các gói cần thiết:
 ```
 pip install -r requirements.txt
 ```
 
-5. Thiết lập cơ sở dữ liệu:
+4. Thiết lập cơ sở dữ liệu:
 ```
 flask db init
 flask db migrate
 flask db upgrade
 ```
 
-6. Chạy ứng dụng:
+5. Chạy ứng dụng:
 ```
 flask run
 ```
-7. Có thể thay đổi bước 5,6 bằng cách chạy file
+hoặc
 ```
-run.py
+python run.py
 ```
+
+## Tài khoản mặc định
+
+Sau khi chạy script tự động, hệ thống sẽ được tạo với các tài khoản mặc định:
+
+- **Admin**: admin@example.com / admin123
+- **User**: user@example.com / user123
+
 ## Sử dụng 
 
 - Đăng ký tài khoản mới hoặc đăng nhập bằng tài khoản hiện có.
@@ -71,6 +91,7 @@ flask-task-manager
 │   ├── __init__.py
 │   ├── config.py
 │   ├── models.py
+│   ├── forms.py
 │   ├── routes
 │   │   ├── __init__.py
 │   │   ├── auth.py
@@ -79,6 +100,7 @@ flask-task-manager
 │   │   ├── css
 │   │   │   ├── main.css
 │   │   │   └── styles.css
+│   │   ├── avatars
 │   │   └── js
 │   │       └── main.js
 │   └── templates
@@ -95,14 +117,14 @@ flask-task-manager
 ├── instance
 │   └── tasks.db
 ├── migrations
-│   └── README.md
 ├── tests
 │   ├── __init__.py
 │   ├── test_auth.py
 │   └── test_tasks.py
 ├── .gitignore
+├── run.bat
+├── run.sh
+├── run.py
 ├── README.md
 └── requirements.txt
 ```
-
-
