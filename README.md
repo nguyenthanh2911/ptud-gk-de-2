@@ -117,13 +117,8 @@ flask-task-manager
 ├── instance
 │   └── tasks.db
 ├── migrations
-├── tests
-│   ├── __init__.py
-│   ├── test_auth.py
-│   └── test_tasks.py
 ├── .gitignore
 ├── run.bat
-├── run.sh
 ├── run.py
 ├── README.md
 └── requirements.txt
