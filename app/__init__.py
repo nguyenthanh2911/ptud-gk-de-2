@@ -3,9 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 import os
-
-# Import cấu hình từ config.py
 from config import config
+import jinja2
 
 # Khởi tạo các extension
 db = SQLAlchemy()
@@ -25,6 +24,13 @@ def create_app(config_name='default'):
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
+    
+    # Thêm filter nl2br cho Jinja2
+    @app.template_filter('nl2br')
+    def nl2br_filter(text):
+        if text:
+            return jinja2.utils.markupsafe.Markup(text.replace('\n', '<br>'))
+        return ''
     
     # Import và đăng ký các blueprint
     from app.routes.auth import bp as auth_bp
