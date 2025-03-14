@@ -208,3 +208,27 @@ button:hover {
         max-width: 95%;
     }
 }
+
+
+/* Màu đỏ nhạt đậm hơn cho các công việc chưa hoàn thành */
+.table-danger-light {
+    background-color: #ffcccb !important; /* Màu đỏ nhạt đậm hơn */
+}
+
+.table-danger-light td {
+    color: #721c24; /* Màu text đậm hơn để dễ nhìn */
+}
+
+/* Đảm bảo màu sắc vẫn được giữ nguyên khi hover */
+.table-hover .table-danger-light:hover {
+    background-color: #f8b9b7 !important; /* Màu hover đậm hơn một chút */
+}
+
+/* Duy trì màu cho các dòng chẵn/lẻ trong table-striped */
+.table-striped > tbody > tr.table-danger-light:nth-of-type(odd) > * {
+    background-color: #ffcccb !important;
+}
+
+.table-striped > tbody > tr.table-danger-light:nth-of-type(even) > * {
+    background-color: #ffcccb !important;
+}

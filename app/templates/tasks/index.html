@@ -30,7 +30,7 @@
                     </thead>
                     <tbody>
                         {% for task in tasks %}
-                            <tr class="{% if task.is_overdue() %}table-danger{% endif %}">
+                            <tr class="{% if task.is_overdue() %}table-danger{% elif not task.finished %}table-danger-light{% endif %}">
                                 <td>
                                     {% if task.is_overdue() %}<i class="bi bi-exclamation-circle-fill text-danger"></i>{% endif %}
                                     <a href="{{ url_for('tasks.view', task_id=task.id) }}">{{ task.title }}</a>
