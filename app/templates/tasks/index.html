@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="tasks-container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Danh sách công việc</h1>
+            <a href="{{ url_for('tasks.create') }}" class="btn btn-primary">Tạo mới</a>
+        </div>
+        
+        {% if overdue_count > 0 %}
+            <div class="alert alert-warning">
+                <strong>Cảnh báo:</strong> Bạn có {{ overdue_count }} công việc quá hạn!
+            </div>
+        {% endif %}
+        
+        {% if tasks %}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Tiêu đề</th>
+                            <th>Trạng thái</th>
+                            <th>Hạn chót</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày hoàn thành</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in tasks %}
+                            <tr class="{% if task.is_overdue() %}table-danger{% endif %}">
+                                <td><a href="{{ url_for('tasks.view', task_id=task.id) }}">{{ task.title }}</a></td>
+                                <td>
+                                    {% if task.status == 'pending' %}
+                                        <span class="badge bg-warning">Chờ xử lý</span>
+                                    {% elif task.status == 'in_progress' %}
+                                        <span class="badge bg-primary">Đang thực hiện</span>
+                                    {% elif task.status == 'completed' %}
+                                        <span class="badge bg-success">Hoàn thành</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ task.deadline.strftime('%d/%m/%Y %H:%M') if task.deadline else 'N/A' }}</td>
+                                <td>{{ task.created.strftime('%d/%m/%Y %H:%M') }}</td>
+                                <td>{{ task.finished.strftime('%d/%m/%Y %H:%M') if task.finished else 'Chưa hoàn thành' }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ url_for('tasks.view', task_id=task.id) }}" class="btn btn-sm btn-info">Xem</a>
+                                        <a href="{{ url_for('tasks.edit', task_id=task.id) }}" class="btn btn-sm btn-warning">Sửa</a>
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ task.id }}">
+                                            Xóa
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Modal xác nhận xóa -->
+                                    <div class="modal fade" id="deleteModal{{ task.id }}" tabindex="-1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Xác nhận xóa</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Bạn có chắc chắn muốn xóa công việc "{{ task.title }}" không?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                    <form action="{{ url_for('tasks.delete', task_id=task.id) }}" method="POST">
+                                                        <button type="submit" class="btn btn-danger">Xóa</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info mt-3">
+                <p>Không có công việc nào. <a href="{{ url_for('tasks.create') }}">Tạo công việc mới?</a></p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

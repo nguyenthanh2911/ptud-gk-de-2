@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="view-task-container">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h1 class="card-title">{{ task.title }}</h1>
+                <div>
+                    <a href="{{ url_for('tasks.edit', task_id=task.id) }}" class="btn btn-warning">Chỉnh sửa</a>
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Xóa</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <strong>Trạng thái:</strong>
+                        {% if task.status == 'pending' %}
+                            <span class="badge bg-warning">Chờ xử lý</span>
+                        {% elif task.status == 'in_progress' %}
+                            <span class="badge bg-primary">Đang thực hiện</span>
+                        {% elif task.status == 'completed' %}
+                            <span class="badge bg-success">Hoàn thành</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Người tạo:</strong> {{ task.user.username }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <strong>Ngày tạo:</strong> {{ task.created.strftime('%d/%m/%Y %H:%M') }}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Hạn chót:</strong> 
+                        <span class="{% if task.is_overdue() %}text-danger{% endif %}">
+                            {{ task.deadline.strftime('%d/%m/%Y %H:%M') if task.deadline else 'N/A' }}
+                        </span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <strong>Ngày hoàn thành:</strong> {{ task.finished.strftime('%d/%m/%Y %H:%M') if task.finished else 'Chưa hoàn thành' }}
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <h4>Mô tả công việc:</h4>
+                    <div class="description-box p-3 border rounded">
+                        {% if task.description %}
+                            {{ task.description|nl2br }}
+                        {% else %}
+                            <em>Không có mô tả</em>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal xác nhận xóa -->
+        <div class="modal fade" id="deleteModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Xác nhận xóa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Bạn có chắc chắn muốn xóa công việc "{{ task.title }}" không?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <form action="{{ url_for('tasks.delete', task_id=task.id) }}" method="POST">
+                            <button type="submit" class="btn btn-danger">Xóa</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

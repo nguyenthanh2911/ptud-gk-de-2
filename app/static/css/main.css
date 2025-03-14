@@ -1,0 +1,236 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.task {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+.task.overdue {
+    border-color: red;
+    background-color: #ffe6e6;
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+    padding: 10px 0;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+/* Avatar styles */
+.avatar {
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.avatar-small {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+.avatar-large {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+}
+
+/* Form styles */
+.login-container,
+.register-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+.profile-container,
+.create-task-container,
+.edit-task-container,
+.view-task-container,
+.tasks-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+/* Task styles */
+.task {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+.task.overdue {
+    border-color: red;
+    background-color: #ffe6e6;
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
+}
+
+/* Button styles */
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Description box */
+.description-box {
+    min-height: 100px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+/* Table responsive fixes */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Navbar custom */
+.navbar {
+    margin-bottom: 20px;
+}
+
+.dropdown-menu {
+    min-width: 200px;
+}
+
+/* Thay thế phần CSS tùy chỉnh menu với các quy tắc mới này */
+
+/* Tùy chỉnh thanh menu */
+.navbar-dark .navbar-nav .nav-link {
+    color: #000000; /* Màu đen */
+    font-weight: normal;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #333333; /* Màu xám đậm khi hover */
+    text-decoration: underline;
+}
+
+.navbar-dark .navbar-brand {
+    color: #000000; /* Màu đen cho logo */
+    font-weight: bold;
+}
+
+/* Tùy chỉnh dropdown */
+.dropdown-menu {
+    background-color: #ffffff; /* Màu nền trắng */
+    border: 1px solid #dddddd;
+}
+
+.dropdown-item {
+    color: #000000; /* Màu đen cho các mục dropdown */
+}
+
+.dropdown-item:hover {
+    color: #000000;
+    background-color: #f0f0f0; /* Màu xám nhạt khi hover */
+}
+
+.dropdown-divider {
+    border-top: 1px solid #dddddd;
+}
+
+/* Tùy chỉnh badge (số công việc quá hạn) - không có hiệu ứng */
+.badge.bg-danger {
+    background-color: #dc3545 !important; /* Màu đỏ tiêu chuẩn */
+    color: white;
+    font-weight: bold;
+    /* Đã loại bỏ animation */
+}

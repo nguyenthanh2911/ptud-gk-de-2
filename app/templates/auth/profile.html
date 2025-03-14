@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="profile-container">
+        <h1>Hồ sơ cá nhân</h1>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                {% if current_user.avatar %}
+                    <img src="{{ url_for('static', filename='avatars/' + current_user.avatar) }}" class="img-thumbnail avatar-large" alt="Avatar">
+                {% else %}
+                    <img src="https://avatar-placeholder.iran.liara.run/" class="img-thumbnail avatar-large" alt="Avatar">
+                {% endif %}
+                
+                {% if current_user.overdue_count and current_user.overdue_count > 0 %}
+                    <div class="alert alert-danger mt-3">
+                        <strong>Cảnh báo:</strong> Bạn có {{ current_user.overdue_count }} công việc quá hạn!
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form.username.label }}
+                        {{ form.username(class="form-control") }}
+                        {% for error in form.username.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.email.label }}
+                        {{ form.email(class="form-control") }}
+                        {% for error in form.email.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.avatar.label }}
+                        {{ form.avatar(class="form-control") }}
+                        {% for error in form.avatar.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                        <small class="form-text text-muted">Chấp nhận các định dạng: jpg, jpeg, png</small>
+                    </div>
+                    <div class="form-group mt-3">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
