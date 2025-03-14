@@ -2,24 +2,26 @@
 
 {% block content %}
     <div class="tasks-container">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>Danh sách công việc</h1>
             <a href="{{ url_for('tasks.create') }}" class="btn btn-primary">Tạo mới</a>
         </div>
         
         {% if overdue_count > 0 %}
-            <div class="alert alert-warning">
-                <strong>Cảnh báo:</strong> Bạn có {{ overdue_count }} công việc quá hạn!
+            <div class="alert alert-danger">
+                <strong><i class="bi bi-exclamation-triangle-fill"></i> Cảnh báo:</strong> 
+                Bạn có {{ overdue_count }} công việc quá hạn! Vui lòng xem và cập nhật sớm.
             </div>
         {% endif %}
         
         {% if tasks %}
             <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
+                <table class="table table-hover table-striped">
+                    <thead class="table-light">
                         <tr>
                             <th>Tiêu đề</th>
                             <th>Trạng thái</th>
+                            <th>Mô tả</th>
                             <th>Hạn chót</th>
                             <th>Ngày tạo</th>
                             <th>Ngày hoàn thành</th>
@@ -29,7 +31,10 @@
                     <tbody>
                         {% for task in tasks %}
                             <tr class="{% if task.is_overdue() %}table-danger{% endif %}">
-                                <td><a href="{{ url_for('tasks.view', task_id=task.id) }}">{{ task.title }}</a></td>
+                                <td>
+                                    {% if task.is_overdue() %}<i class="bi bi-exclamation-circle-fill text-danger"></i>{% endif %}
+                                    <a href="{{ url_for('tasks.view', task_id=task.id) }}">{{ task.title }}</a>
+                                </td>
                                 <td>
                                     {% if task.status == 'pending' %}
                                         <span class="badge bg-warning">Chờ xử lý</span>
@@ -39,9 +44,26 @@
                                         <span class="badge bg-success">Hoàn thành</span>
                                     {% endif %}
                                 </td>
-                                <td>{{ task.deadline.strftime('%d/%m/%Y %H:%M') if task.deadline else 'N/A' }}</td>
+                                <td>
+                                    <div class="text-truncate" style="max-width: 200px;" title="{{ task.description }}">
+                                        {{ task.description|striptags|truncate(50) }}
+                                    </div>
+                                </td>
+                                <td>
+                                    {% if task.is_overdue() %}
+                                        <strong class="text-danger">{{ task.deadline.strftime('%d/%m/%Y %H:%M') }}</strong>
+                                    {% else %}
+                                        {{ task.deadline.strftime('%d/%m/%Y %H:%M') if task.deadline else 'N/A' }}
+                                    {% endif %}
+                                </td>
                                 <td>{{ task.created.strftime('%d/%m/%Y %H:%M') }}</td>
-                                <td>{{ task.finished.strftime('%d/%m/%Y %H:%M') if task.finished else 'Chưa hoàn thành' }}</td>
+                                <td>
+                                    {% if task.finished %}
+                                        {{ task.finished.strftime('%d/%m/%Y %H:%M') }}
+                                    {% else %}
+                                        <span class="badge bg-secondary">Chưa hoàn thành</span>
+                                    {% endif %}
+                                </td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ url_for('tasks.view', task_id=task.id) }}" class="btn btn-sm btn-info">Xem</a>

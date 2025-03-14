@@ -1,59 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2, h3 {
-    color: #333;
-}
-
-.avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.task {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    background-color: #fafafa;
-}
-
-.task.overdue {
-    border-color: red;
-    background-color: #ffe6e6;
-}
-
-.warning {
-    color: red;
-    font-weight: bold;
-}
-
-button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #218838;
-}
 /* Base styles */
 body {
     font-family: Arial, sans-serif;
@@ -123,9 +67,19 @@ h1, h2, h3 {
 .profile-container,
 .create-task-container,
 .edit-task-container,
-.view-task-container,
-.tasks-container {
+.view-task-container {
     max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+/* Danh sách công việc có container rộng hơn */
+.tasks-container {
+    max-width: 95%; /* Sử dụng phần trăm thay vì kích thước cố định */
     margin: 0 auto;
     padding: 20px;
     background: #fff;
@@ -179,47 +133,47 @@ button:hover {
 /* Table responsive fixes */
 .table-responsive {
     overflow-x: auto;
+    min-height: 300px; /* Đảm bảo bảng có kích thước tối thiểu */
 }
 
 /* Navbar custom */
 .navbar {
     margin-bottom: 20px;
+    background-color: #d5e3f3 !important;  /* Light gray background */
 }
 
 .dropdown-menu {
     min-width: 200px;
 }
 
-/* Thay thế phần CSS tùy chỉnh menu với các quy tắc mới này */
-
 /* Tùy chỉnh thanh menu */
-.navbar-dark .navbar-nav .nav-link {
-    color: #000000; /* Màu đen */
+.navbar .navbar-nav .nav-link {
+    color: #212529 !important; /* Màu text đen */
     font-weight: normal;
 }
 
-.navbar-dark .navbar-nav .nav-link:hover {
-    color: #333333; /* Màu xám đậm khi hover */
-    text-decoration: underline;
+.navbar .navbar-nav .nav-link:hover {
+    color: #0d6efd !important; /* Màu xanh khi hover */
+    text-decoration: none;
 }
 
-.navbar-dark .navbar-brand {
-    color: #000000; /* Màu đen cho logo */
+.navbar .navbar-brand {
+    color: #212529 !important; /* Màu đen cho logo */
     font-weight: bold;
 }
 
 /* Tùy chỉnh dropdown */
 .dropdown-menu {
-    background-color: #ffffff; /* Màu nền trắng */
+    background-color: #dddddd; /* Màu nền trắng */
     border: 1px solid #dddddd;
 }
 
 .dropdown-item {
-    color: #000000; /* Màu đen cho các mục dropdown */
+    color: #212529; /* Màu đen cho các mục dropdown */
 }
 
 .dropdown-item:hover {
-    color: #000000;
+    color: #0d6efd;
     background-color: #f0f0f0; /* Màu xám nhạt khi hover */
 }
 
@@ -227,10 +181,30 @@ button:hover {
     border-top: 1px solid #dddddd;
 }
 
-/* Tùy chỉnh badge (số công việc quá hạn) - không có hiệu ứng */
-.badge.bg-danger {
-    background-color: #dc3545 !important; /* Màu đỏ tiêu chuẩn */
+/* Tô đậm và đổi màu cho các task quá hạn */
+.table-danger td {
+    color: #721c24;
+    font-weight: 500;
+}
+
+/* Tô đậm cảnh báo trong bảng */
+.table-danger td a {
+    color: #721c24;
+    font-weight: bold;
+}
+
+/* Badge cảnh báo quá hạn */
+.badge-overdue {
+    background-color: #dc3545;
     color: white;
     font-weight: bold;
-    /* Đã loại bỏ animation */
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+/* Tùy chỉnh kích thước container cho main */
+@media (min-width: 1200px) {
+    main.container {
+        max-width: 95%;
+    }
 }
