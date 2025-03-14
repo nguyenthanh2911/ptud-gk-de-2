@@ -20,7 +20,7 @@ Flask Task Manager là một ứng dụng quản lý tác vụ đơn giản đư
 
 ## cài đặt
 
-### Cài đặt tự động (Khuyến nghị)
+### Cài đặt tự động (Nếu lỗi Thầy hãy cài đăt thủ công)
 
 #### Windows:
 ```
