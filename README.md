@@ -1,6 +1,6 @@
 # Thông tin sinh viên  
-Nguyễn Văn Thành
-MSSV: 22724071
+Nguyễn Văn Thành  
+MSSV: 22724071  
 
 
 
@@ -27,11 +27,6 @@ Flask Task Manager là một ứng dụng quản lý tác vụ đơn giản đư
 run.bat
 ```
 
-#### macOS/Linux:
-```
-chmod +x run.sh
-./run.sh
-```
 
 ### Cài đặt thủ công
 
