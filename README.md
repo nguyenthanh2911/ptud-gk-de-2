@@ -1,63 +1,69 @@
+# Thông tin sinh viên  
+Nguyễn Văn Thành
+MSSV: 22724071
+
+
+
+
 # Flask Task Manager
 
-Flask Task Manager is a simple task management application built using Flask and SQLite. It allows users to create, edit, and manage tasks while tracking their completion status and timestamps. Users can also upload avatars and view the number of overdue tasks.
+Flask Task Manager là một ứng dụng quản lý tác vụ đơn giản được xây dựng bằng Flask và SQLite. Nó cho phép người dùng tạo, chỉnh sửa và quản lý các tác vụ trong khi theo dõi trạng thái hoàn thành và dấu thời gian của chúng. Người dùng cũng có thể tải lên ảnh đại diện và xem số lượng tác vụ quá hạn.
 
-## Features
+## chức năng
 
-- User authentication (login, registration, profile management)
-- Task management (create, edit, view tasks)
-- Completion status tracking
-- Timestamp tracking for tasks
-- Avatar upload for users
-- Display of overdue tasks with a warning indicator
+- Xác thực người dùng (đăng nhập, đăng ký, quản lý hồ sơ)
+- Quản lý tác vụ (tạo, chỉnh sửa, xem tác vụ)
+- Theo dõi trạng thái hoàn thành
+- Theo dõi dấu thời gian cho các tác vụ
+- Tải lên ảnh đại diện cho người dùng
+- Hiển thị các tác vụ quá hạn với chỉ báo cảnh báo
 
-## Installation
+## cài đặt
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd flask-task-manager
-   ```
+1. khởi chạy
+```
 
-2. Create a virtual environment:
-   ```
-   python -m venv venv
-   ```
+2. Tạo môi trường ảo:
+```
+python -m venv venv
+```
 
-3. Activate the virtual environment:
-   - On Windows:
-     ```
-     venv\Scripts\activate
-     ```
-   - On macOS/Linux:
-     ```
-     source venv/bin/activate
-     ```
+3. Kích hoạt môi trường ảo:
+- Trên Windows:
+```
+venv\Scripts\activate
+```
+- Trên macOS/Linux:
+```
+source venv/bin/activate
+```
 
-4. Install the required packages:
-   ```
-   pip install -r requirements.txt
-   ```
+4. Cài đặt các gói cần thiết:
+```
+pip install -r requirements.txt
+```
 
-5. Set up the database:
-   ```
-   flask db init
-   flask db migrate
-   flask db upgrade
-   ```
+5. Thiết lập cơ sở dữ liệu:
+```
+flask db init
+flask db migrate
+flask db upgrade
+```
 
-6. Run the application:
-   ```
-   flask run
-   ```
+6. Chạy ứng dụng:
+```
+flask run
+```
+7. Có thể thay đổi bước 5,6 bằng cách chạy file
+```
+run.py
+```
+## Sử dụng 
 
-## Usage
+- Đăng ký tài khoản mới hoặc đăng nhập bằng tài khoản hiện có.
+- Quản lý nhiệm vụ của bạn và xem hồ sơ của bạn, bao gồm cả ảnh đại diện và nhiệm vụ quá hạn.
 
-- Navigate to `http://127.0.0.1:5000` in your web browser.
-- Register a new account or log in with an existing account.
-- Manage your tasks and view your profile, including your avatar and overdue tasks.
-
-## Directory Structure
+## Cấu trúc cây
 
 ```
 flask-task-manager
@@ -99,6 +105,4 @@ flask-task-manager
 └── requirements.txt
 ```
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.# ptud-gk-de-2
